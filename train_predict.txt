@@ -1,0 +1,16 @@
+
+python segment/train.py --data data/knuckle.yaml --batch 2 --weights yolov7-seg.pt --cfg cfg/segment/yolov7-seg.yaml --epochs 100 --name yolov7-seg --img 640 --hyp data/hyps/hyp.scratch-high.yaml
+
+
+#for segmentation with detection
+python segment/predict.py --weights yolov7-seg.pt --source "videopath.mp4"
+
+#for segmentation with detection + Tracking
+python segment/predict.py --weights yolov7-seg.pt --source "football1.mp4" --trk
+
+#save the labels files of segmentation
+python segment/predict.py --weights yolov7-seg.pt --source "videopath.mp4" --save-txt
+
+python segment/predict.py --weights runs/train-seg/yolov7-seg4/weights/best.pt --source datasets/knuckle/YOLODataset/images/test
+
+
